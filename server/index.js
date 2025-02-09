@@ -13,11 +13,11 @@ const PORT = process.env.PORT || 10000;
 const corsOptions = {
   origin: 'https://ttproject-5.netlify.app',  // Replace with your actual Netlify domain
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type'],
 };
 
-// Apply CORS middleware before defining routes
-app.use(cors(corsOptions));  
+// Apply CORS middleware globally (for all routes)
+app.use(cors(corsOptions));
 
 // Database connection setup
 const db = mysql.createConnection({
