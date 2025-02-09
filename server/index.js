@@ -1,16 +1,23 @@
 import express from 'express';
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
-import cors from 'cors'; // Import the cors package
+import cors from 'cors';  // Import the cors package
 
 dotenv.config();  // Load environment variables from .env file
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 10000;
 
-// Enable CORS for all origins (or specify allowed origins if needed)
-app.use(cors());  // You can pass options here if you want to restrict origins
+// CORS setup: Allow requests only from Netlify's domain
+const corsOptions = {
+  origin: 'https://ttproject-5.netlify.app',  // Replace with your actual Netlify domain
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+};
+
+// Apply CORS middleware before defining routes
+app.use(cors(corsOptions));  
 
 // Database connection setup
 const db = mysql.createConnection({
