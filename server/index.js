@@ -1,12 +1,16 @@
 import express from 'express';
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
+import cors from 'cors'; // Import the cors package
 
 dotenv.config();  // Load environment variables from .env file
 
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// Enable CORS for all origins (or specify allowed origins if needed)
+app.use(cors());  // You can pass options here if you want to restrict origins
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -16,7 +20,6 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT
 });
-
 
 // Connect to the database
 db.connect((err) => {
