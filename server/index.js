@@ -48,7 +48,7 @@ db.connect((err) => {
 
 // Define a route
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello, World! This is served by the Express server!' });
+  res.json({ message: 'Hello, World! This is served by Tom!' });
 });
 
 // Start the server
